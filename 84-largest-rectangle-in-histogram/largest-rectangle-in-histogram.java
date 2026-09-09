@@ -5,16 +5,15 @@ class Solution {
         int[] right = new int[n];
         Stack<Integer> stack = new Stack<>();
 
-        // Nearest Smaller to Left
+     
         for (int i = 0; i < n; i++) {
             while (!stack.isEmpty() && heights[stack.peek()] >= heights[i]) stack.pop();
             left[i] = stack.isEmpty() ? -1 : stack.peek();
             stack.push(i);
         }
 
-        stack.clear(); // Reuse stack
+        stack.clear();
 
-        // Nearest Smaller to Right
         for (int i = n - 1; i >= 0; i--) {
             while (!stack.isEmpty() && heights[stack.peek()] >= heights[i]) stack.pop();
             right[i] = stack.isEmpty() ? n : stack.peek();
